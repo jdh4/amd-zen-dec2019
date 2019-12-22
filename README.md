@@ -46,16 +46,6 @@ print(times)
 
 ## GROMACS
 
-```
-wget ftp://ftp.gromacs.org/pub/benchmarks/rnase_bench_systems.tar.gz
-tar -zxvf rnase_bench_systems.tar.gz
-BCH=rnase_cubic
-gmx grompp -f $BCH/pme_verlet.mdp -c $BCH/conf.gro -p $BCH/topol.top -o bench.tpr
-gmx mdrun -ntomp 8 -s bench.tpr
-gmx mdrun -ntmpi 16 -ntomp 1 -s bench.tpr
-gmx mdrun -ntmpi 1 -ntomp 16 -s bench.tpr
-```
-
 | Machine     | Compiler  |MPI threads | OMP_NUM_THREADS | Execution time | Performance |
 |:-----------:|:---------:|:-----------:|:---------------:|:--------------:|:-----------:|
 | AMD Perseus | aocc      | 8           | 1               | 31.8               | 54.4 |
@@ -67,6 +57,18 @@ gmx mdrun -ntmpi 1 -ntomp 16 -s bench.tpr
 | Della Cascade| intel    | 16          | 1               | 15.8               | 109.3 |
 
 [Build procedure](https://github.com/jdh4/running_gromacs/blob/master/02_installation/tigerCpu/tigerCpu.sh) for tigerCpu
+
+Obtaining the benchmark:
+
+```
+wget ftp://ftp.gromacs.org/pub/benchmarks/rnase_bench_systems.tar.gz
+tar -zxvf rnase_bench_systems.tar.gz
+BCH=rnase_cubic
+gmx grompp -f $BCH/pme_verlet.mdp -c $BCH/conf.gro -p $BCH/topol.top -o bench.tpr
+gmx mdrun -ntomp 8 -s bench.tpr
+gmx mdrun -ntmpi 16 -ntomp 1 -s bench.tpr
+gmx mdrun -ntmpi 1 -ntomp 16 -s bench.tpr
+```
 
 ### GROMACS with AOCC
 
