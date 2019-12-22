@@ -56,16 +56,19 @@ gmx mdrun -ntmpi 16 -ntomp 1 -s bench.tpr
 gmx mdrun -ntmpi 1 -ntomp 16 -s bench.tpr
 ```
 
-| cluser      | MPI threads | OMP_NUM_THREADS | Execution time (s) | Performance (ns/day) |
-|:-----------:|:-----------:|:---------------:|:------------------:|:--------------------:|
-| AMD Perseus | 8           | 1               | 31.8               | 54.4 |
-| tigerCpu    | 8           | 1               | 27.5               | 62.7 |
-| AMD Perseus | 1           | 8               | 48.0               | 36.0 |
-| tigerCpu    | 1           | 8               | 26.3               | 65.8 |
-| AMD Perseus | 16          | 1               | 19.6               | 88.2 |
-| tigerCpu    | 16          | 1               | 15.7               | 109.9 |
-| Della Cascade| 16         | 1               | 15.8               | 109.3 |
+| Machine     | Compiler  |MPI threads | OMP_NUM_THREADS | Execution time | Performance |
+|:-----------:|:---------:|:-----------:|:---------------:|:--------------:|:-----------:|
+| AMD Perseus | aocc      | 8           | 1               | 31.8               | 54.4 |
+| AMD Perseus | intel     | 8           | 1               | 30.3               | 57.1 |
+| tigerCpu    | intel     | 8           | 1               | 27.5               | 62.7 |
+| AMD Perseus | aocc      | 16          | 1               | 19.6               | 88.2 |
+| AMD Perseus | intel     | 16          | 1               | 19.5               | 88.7 |
+| tigerCpu    | intel     | 16          | 1               | 15.7               | 109.9 |
+| Della Cascade| intel    | 16          | 1               | 15.8               | 109.3 |
 
+[Build procedure](https://github.com/jdh4/running_gromacs/blob/master/02_installation/tigerCpu/tigerCpu.sh) for tigerCpu
+
+### GROMACS with AOCC
 
 GROMACS was built according to this procedure:
 
@@ -123,4 +126,54 @@ C compiler:         /opt/AMD/aocc-compiler-2.1.0/bin/clang Clang 9.0.0
 C compiler flags:    -mavx2 -mfma     -Ofast -DNDEBUG
 C++ compiler:       /opt/AMD/aocc-compiler-2.1.0/bin/clang++ Clang 9.0.0
 C++ compiler flags:  -mavx2 -mfma    -std=c++11   -Ofast -DNDEBUG
+```
+
+### GROMACS with Intel
+
+```
+#!/bin/bash
+version=2019.4
+wget ftp://ftp.gromacs.org/pub/gromacs/gromacs-${version}.tar.gz
+tar -zxvf gromacs-${version}.tar.gz
+cd gromacs-${version}
+mkdir build_stage1
+cd build_stage1
+
+module purge
+module load intel/19.0/64/19.0.1.144
+
+OPTFLAGS="-Ofast -DNDEBUG"
+
+cmake3 .. -DCMAKE_BUILD_TYPE=Release \
+-DCMAKE_C_COMPILER=icc -DCMAKE_C_FLAGS_RELEASE="$OPTFLAGS" \
+-DCMAKE_CXX_COMPILER=icpc -DCMAKE_CXX_FLAGS_RELEASE="$OPTFLAGS" \
+-DGMX_BUILD_MDRUN_ONLY=OFF -DGMX_MPI=OFF -DGMX_OPENMP=ON \
+-DGMX_DOUBLE=OFF \
+-DGMX_FFT_LIBRARY=mkl \
+-DGMX_GPU=OFF \
+-DCMAKE_INSTALL_PREFIX=$HOME/.local \
+-DGMX_DEFAULT_SUFFIX=OFF -DGMX_BINARY_SUFFIX=_intel -DGMX_LIBS_SUFFIX=_intel \
+-DGMX_COOL_QUOTES=OFF
+
+make -j 10
+make install
+```
+
+```
+GROMACS version:    2019.4
+Precision:          single
+Memory model:       64 bit
+MPI library:        thread_mpi
+OpenMP support:     enabled (GMX_OPENMP_MAX_THREADS = 64)
+GPU support:        disabled
+SIMD instructions:  AVX2_256
+FFT library:        Intel MKL
+RDTSCP usage:       enabled
+TNG support:        enabled
+Hwloc support:      hwloc-1.11.8
+Tracing support:    disabled
+C compiler:         /opt/intel/compilers_and_libraries_2019.1.144/linux/bin/intel64/icc Intel 19.0.0.20181018
+C compiler flags:    -march=core-avx2   -mkl=sequential  -std=gnu99  -Ofast -DNDEBUG -ip -funroll-all-loops -alias-const -ansi-alias -no-prec-div -fimf-domain-exclusion=14 -qoverride-limits  
+C++ compiler:       /opt/intel/compilers_and_libraries_2019.1.144/linux/bin/intel64/icpc Intel 19.0.0.20181018
+C++ compiler flags:  -march=core-avx2   -mkl=sequential  -std=c++11   -Ofast -DNDEBUG -ip -funroll-all-loops -alias-const -ansi-alias -no-prec-div -fimf-domain-exclusion=14 -qoverride-limits  
 ```
