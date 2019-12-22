@@ -29,7 +29,7 @@ The execution times are the best of 5 runs.
 
 Below is the Python script:
 
-```
+```python
 from time import perf_counter
 
 import numpy as np
