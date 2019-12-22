@@ -41,6 +41,7 @@ OMP_NUM_THREADS=<num> python lu.py
 The execution times are the best of 5 runs.
 
 (a) OpenBLAS instead of MKL
+
 (b) MKL_DEBUG_CPU_TYPE=5
 
 Below is the Python script:
