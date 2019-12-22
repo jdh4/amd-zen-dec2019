@@ -15,7 +15,7 @@ OMP_NUM_THREADS=<num> python lu.py
 | Della Haswell | 1               | 17.6 |
 | AMD Perseus   | 2               | 34.9 |
 | Della Cascade | 2               |  6.5 |
-| Della Haswell | 1               | 10.0 |
+| Della Haswell | 2               | 10.0 |
 | AMD Perseus   | 4               | 18.0 |
 | Della Cascade | 4               |  3.9 |
 | AMD Perseus   | 8               |  9.8 |
