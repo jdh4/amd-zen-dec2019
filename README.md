@@ -8,14 +8,22 @@ module load anaconda3/2019.10
 OMP_NUM_THREADS=<num> python lu.py
 ```
 
-| cluser      | OMP_NUM_THREADS | Execution time (s) |
-|:-----------:|:---------------:|:------------------:|
-| AMD Perseus | 1               | 67.0 |
-| AMD Perseus | 2               | 34.9 |
-| AMD Perseus | 4               | 18.0 |
-| AMD Perseus | 8               |  9.8 |
-| AMD Perseus | 16              |  6.1 |
-| AMD Perseus | 32              |  3.9 |
+| Machine       | OMP_NUM_THREADS | Execution time (s) |
+|:-------------:|:---------------:|:------------------:|
+| AMD Perseus   | 1               | 67.0 |
+| Della Cascade | 1               | 12.0 |
+| Della Haswell | 1               | 17.6 |
+| AMD Perseus   | 2               | 34.9 |
+| Della Cascade | 2               |  6.5 |
+| Della Haswell | 1               | 10.0 |
+| AMD Perseus   | 4               | 18.0 |
+| Della Cascade | 4               |  3.9 |
+| AMD Perseus   | 8               |  9.8 |
+| Della Cascade | 8               |  2.8 |
+| AMD Perseus   | 16              |  6.1 |
+| Della Cascade | 16              |  2.2 |
+| AMD Perseus   | 32              |  3.9 |
+| Della Cascade | 32              |  1.9 |
 
 The execution times are the best of 5 runs.
 
