@@ -59,8 +59,13 @@ gmx mdrun -ntmpi 1 -ntomp 16 -s bench.tpr
 | cluser      | MPI threads | OMP_NUM_THREADS | Execution time (s) | Performance (ns/day) |
 |:-----------:|:-----------:|:---------------:|:------------------:|:--------------------:|
 | AMD Perseus | 8           | 1               | 31.8               | 54.4 |
+| tigerCpu    | 8           | 1               | 27.5               | 62.7 |
 | AMD Perseus | 1           | 8               | 48.0               | 36.0 |
+| tigerCpu    | 1           | 8               | 26.3               | 65.8 |
 | AMD Perseus | 16          | 1               | 19.6               | 88.2 |
+| tigerCpu    | 16          | 1               | 15.7               | 109.9 |
+| Della Cascade| 16         | 1               | 15.8               | 109.3 |
+
 
 GROMACS was built according to this procedure:
 
