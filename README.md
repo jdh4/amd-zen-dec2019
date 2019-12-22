@@ -5,6 +5,13 @@
 ```
 ssh jdh4@perseus-amd.princeton.edu
 module load anaconda3/2019.10
+
+OMP_NUM_THREADS=<num> python lu.py
+or
+MKL_DEBUG_CPU_TYPE=5 OMP_NUM_THREADS=<num> python lu.py
+or
+conda create --name nomkl-env numpy scipy nomkl
+conda activate nomkl-env
 OMP_NUM_THREADS=<num> python lu.py
 ```
 
