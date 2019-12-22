@@ -53,8 +53,13 @@ print(times)
 | tigerCpu    | intel     | 8           | 1               | 27.5               | 62.7 |
 | AMD Perseus | aocc      | 16          | 1               | 19.6               | 88.2 |
 | AMD Perseus | intel     | 16          | 1               | 19.5               | 88.7 |
-| tigerCpu    | intel     | 16          | 1               | 15.7               | 109.9 |
-| Della Cascade| intel    | 16          | 1               | 15.8               | 109.3 |
+| tigerCpu    | intel     | 16          | 1               | 15.7               | 109.9|
+| Della Cascade| intel    | 16          | 1               | 15.8               | 109.3|
+| tigerCpu    | intel     | 32          | 1               |  9.6               | 179.8|
+| AMD Perseus | aocc      | 32          | 1               | 14.6               | 118.0|
+| AMD Perseus | intel     | 32          | 1               | 13.4               | 128.6|
+| AMD Perseus | aocc      | 64          | 1               | 9.7                | 177.8|
+| AMD Perseus | intel     | 64          | 1               | 10.2               | 170.0|
 
 [Build procedure](https://github.com/jdh4/running_gromacs/blob/master/02_installation/tigerCpu/tigerCpu.sh) for tigerCpu
 
