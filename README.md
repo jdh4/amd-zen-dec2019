@@ -81,10 +81,6 @@ cd gromacs-${version}
 mkdir build_stage1
 cd build_stage1
 
-#############################################################
-# build gmx (stage 1)
-#############################################################
-
 module purge
 module load aocc
 module load rh/devtoolset/7
