@@ -11,7 +11,7 @@ OMP_NUM_THREADS=<num> python lu.py
 | Machine       | OMP_NUM_THREADS | Execution time (s) |
 |:-------------:|:---------------:|:------------------:|
 | AMD Perseus   | 1               | 67.0 |
-| AMD Perseus   | 1               | 20.1 |
+| AMD Perseus (a)   | 1               | 20.1 |
 | Della Cascade | 1               | 12.0 |
 | Della Haswell | 1               | 17.6 |
 | AMD Perseus   | 2               | 34.9 |
@@ -22,7 +22,7 @@ OMP_NUM_THREADS=<num> python lu.py
 | AMD Perseus (a)   | 4               | 6.3 |
 | Della Cascade | 4               |  3.9 |
 | AMD Perseus   | 8               |  9.8 |
-| AMD Perseus (b)   | 8               |  3.9 |
+| AMD Perseus (a)   | 8               |  3.9 |
 | Della Cascade | 8               |  2.8 |
 | AMD Perseus   | 16              |  6.1 |
 | Della Cascade | 16              |  2.2 |
