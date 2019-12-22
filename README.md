@@ -20,9 +20,11 @@ OMP_NUM_THREADS=<num> python lu.py
 | Della Haswell (a) | 2               | 10.3 |
 | AMD Perseus   | 4               | 18.0 |
 | AMD Perseus (a)   | 4               | 6.3 |
+| AMD Perseus (b)   | 4               | 4.6 |
 | Della Cascade | 4               |  3.9 |
 | AMD Perseus   | 8               |  9.8 |
 | AMD Perseus (a)   | 8               |  3.9 |
+| AMD Perseus (b)   | 8               |  2.9 |
 | Della Cascade | 8               |  2.8 |
 | AMD Perseus   | 16              |  6.1 |
 | Della Cascade | 16              |  2.2 |
@@ -32,6 +34,7 @@ OMP_NUM_THREADS=<num> python lu.py
 The execution times are the best of 5 runs.
 
 (a) OpenBLAS instead of MKL
+(b) MKL_DEBUG_CPU_TYPE=5
 
 Below is the Python script:
 
