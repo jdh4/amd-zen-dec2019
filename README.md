@@ -96,3 +96,24 @@ make
 make check
 make install
 ```
+
+It is using the AVX2 instructions:
+
+```
+GROMACS version:    2019.4
+Precision:          single
+Memory model:       64 bit
+MPI library:        thread_mpi
+OpenMP support:     enabled (GMX_OPENMP_MAX_THREADS = 64)
+GPU support:        disabled
+SIMD instructions:  AVX2_256
+FFT library:        fftw-3.3.8-sse2-avx-avx2-avx2_128-avx512
+RDTSCP usage:       enabled
+TNG support:        enabled
+Hwloc support:      hwloc-1.11.8
+Tracing support:    disabled
+C compiler:         /opt/AMD/aocc-compiler-2.1.0/bin/clang Clang 9.0.0
+C compiler flags:    -mavx2 -mfma     -Ofast -DNDEBUG
+C++ compiler:       /opt/AMD/aocc-compiler-2.1.0/bin/clang++ Clang 9.0.0
+C++ compiler flags:  -mavx2 -mfma    -std=c++11   -Ofast -DNDEBUG
+```
