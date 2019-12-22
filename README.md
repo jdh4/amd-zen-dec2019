@@ -56,10 +56,11 @@ gmx mdrun -ntmpi 16 -ntomp 1 -s bench.tpr
 gmx mdrun -ntmpi 1 -ntomp 16 -s bench.tpr
 ```
 
-| cluser      | MPI threads | OMP_NUM_THREADS | Execution time (s) |
-|:-----------:|:-----------:|:---------------:|:------------------:|
-| AMD Perseus | 1           | 1               | 67.0 |
-| AMD Perseus | 1           | 2               | 34.9 |
+| cluser      | MPI threads | OMP_NUM_THREADS | Execution time (s) | Performance (ns/day) |
+|:-----------:|:-----------:|:---------------:|:------------------:|:--------------------:|
+| AMD Perseus | 8           | 1               | 31.8               | 54.4 |
+| AMD Perseus | 1           | 8               | 48.0               | 36.0 |
+| AMD Perseus | 16          | 1               | 19.6               | 88.2 |
 
 GROMACS was built according to this procedure:
 
@@ -91,6 +92,7 @@ cmake3 .. -DCMAKE_BUILD_TYPE=Release \
 -DGMX_GPU=OFF \
 -DCMAKE_INSTALL_PREFIX=$HOME/.local \
 -DGMX_COOL_QUOTES=OFF -DREGRESSIONTEST_DOWNLOAD=ON
+# in future add -DGMX_OPENMP_MAX_THREADS=128
 
 make
 make check
