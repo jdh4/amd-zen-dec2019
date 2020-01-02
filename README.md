@@ -71,7 +71,7 @@ print(times)
 
 ## Python Matrix Multiplication
 
-Post-break update with matrix multiplication:
+Post-break update with matrix multiplication (10k x 10k in double):
 
 MKL_DEBUG_CPU_TYPE=5 OMP_NUM_THREADS=4 python mm.py
 
