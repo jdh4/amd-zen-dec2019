@@ -69,10 +69,11 @@ print(p.sum())
 print(times)
 ```
 
+## Python Matrix Multiplication
+
 Post-break update with matrix multiplication:
 
 MKL_DEBUG_CPU_TYPE=5 OMP_NUM_THREADS=4 python mm.py
-
 
 | Machine       | OMP_NUM_THREADS | Execution time (s) |
 |:-------------:|:---------------:|:------------------:|
@@ -81,7 +82,25 @@ MKL_DEBUG_CPU_TYPE=5 OMP_NUM_THREADS=4 python mm.py
 | Della Cascade | 8               |  3.3 |
 | AMD Perseus   | 16              |  2.6 |
 
+The execution times are the best of 5 runs.
 
+```
+from time import perf_counter
+
+N = 10000
+cpu_runs = 5
+
+times = []
+import numpy as np
+X = np.random.randn(N, N).astype(np.float64)
+for _ in range(cpu_runs):
+  t0 = perf_counter()
+  Y = np.matmul(X, X)
+  times.append(perf_counter() - t0)
+print("CPU time: ", min(times))
+print("NumPy version: ", np.__version__)
+print(times)
+```
 
 ## GROMACS
 
