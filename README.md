@@ -84,7 +84,7 @@ MKL_DEBUG_CPU_TYPE=5 OMP_NUM_THREADS=4 python mm.py
 
 The execution times are the best of 5 runs.
 
-```
+```python
 from time import perf_counter
 
 N = 10000
@@ -128,7 +128,7 @@ wget ftp://ftp.gromacs.org/pub/benchmarks/rnase_bench_systems.tar.gz
 tar -zxvf rnase_bench_systems.tar.gz
 BCH=rnase_cubic
 gmx grompp -f $BCH/pme_verlet.mdp -c $BCH/conf.gro -p $BCH/topol.top -o bench.tpr
-gmx mdrun -ntomp 8 -s bench.tpr
+gmx mdrun -ntmpi 1 -ntomp 8 -s bench.tpr
 gmx mdrun -ntmpi 16 -ntomp 1 -s bench.tpr
 gmx mdrun -ntmpi 1 -ntomp 16 -s bench.tpr
 ```
