@@ -69,6 +69,21 @@ print(p.sum())
 print(times)
 ```
 
+Post-break update with matrix multiplication:
+
+MKL_DEBUG_CPU_TYPE=5 OMP_NUM_THREADS=4 python mm.py
+
+
+| Machine       | OMP_NUM_THREADS | Execution time (s) |
+|:-------------:|:---------------:|:------------------:|
+| AMD Perseus   | 2               | 20.5 |
+| Della Cascade | 4               |  6.2 |
+| AMD Perseus   | 4               | 10.2 |
+| AMD Perseus   | 8               |  5.1 |
+| AMD Perseus   | 16              |  2.6 |
+
+
+
 ## GROMACS
 
 | Machine     | Compiler  |MPI threads | OMP_NUM_THREADS | Execution time | Performance |
